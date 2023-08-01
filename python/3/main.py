@@ -13,10 +13,11 @@ def main(argv):
     for l in lines:
         items = dict()
         for i, c in enumerate(l):
-            if i < len(l) / 2:
+            if i < (len(l) / 2) - 1:
                items[c] = 1
             else:
-                if items.get(c, None):
+                if items.get(c, 0) > 0:
+                    items[c] -= 1
                     priorities_sum += PRIORITIES[c]
 
     print(priorities_sum)

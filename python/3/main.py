@@ -10,15 +10,18 @@ def main(argv):
         lines = f.readlines()
 
     priorities_sum = 0
-    for l in lines:
-        items = dict()
+    group_chars = dict()
+
+    for line_number, l in enumerate(lines):
         for i, c in enumerate(l):
-            if i < (len(l) / 2) - 1:
-               items[c] = 1
-            else:
-                if items.get(c, 0) > 0:
-                    items[c] -= 1
-                    priorities_sum += PRIORITIES[c]
+            if group_chars.get(c, (-1, 0))[0] != line_number % 3:
+                group_chars[c] = (line_number % 3, group_chars.get(c, (None, 0))[1] + 1)
+
+            if line_number > 0 and (line_number + 1) % 3 == 0 and group_chars[c][1] == 3:
+                print(f'group badge: {c}')
+                priorities_sum += PRIORITIES[c]
+                group_chars = dict()
+                break
 
     print(priorities_sum)
 

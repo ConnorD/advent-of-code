@@ -15,7 +15,7 @@ def main(argv):
         assignment_range_1 = _assignment_range(assignment_literal_1)
         assignment_range_2 = _assignment_range(assignment_literal_2)
 
-        if set(assignment_range_1).issubset(set(assignment_range_2)) or set(assignment_range_2).issubset(set(assignment_range_1)):
+        if len(set(assignment_range_1).intersection(assignment_range_2)) > 0:
             overlapping_pairs += 1
 
     print(overlapping_pairs)

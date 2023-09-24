@@ -30,7 +30,7 @@ def main(argv):
             for _ in range(move_count):
                 crate_stacks[to_index].append(crate_stacks[from_index].pop())
 
-    print(crate_stacks)
+    print(''.join(set(cs[-1] for cs in crate_stacks)))
 
 if __name__ == '__main__':
     main(sys.argv[1:] if len(sys.argv) > 1 else ['input'])

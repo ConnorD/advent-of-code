@@ -31,10 +31,12 @@ def main(argv):
             to_index: int = int(parsed_instruction[5]) - 1
             print(crate_stacks)
 
-            for _ in range(move_count - 1):
-                crate_stacks[to_index].extend(crate_stacks[from_index].pop())
+            crate_stacks[to_index].extend(crate_stacks[from_index][-1 * move_count:])
 
-    print(''.join(v[-1] for k, v in crate_stacks.items()))
+            for _ in range(move_count):
+                crate_stacks[from_index].pop()
+
+    print(''.join(crate_stacks[i][-1] for i in range(len(crate_stacks))))
 
 if __name__ == '__main__':
     main(sys.argv[1:] if len(sys.argv) > 1 else ['input'])

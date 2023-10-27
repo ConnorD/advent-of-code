@@ -1,5 +1,6 @@
 import sys
 
+NUM_DISTINCT_CHARACTERS = 14
 
 def main(argv):
     with open(f'{argv[0]}.txt') as f:
@@ -10,10 +11,10 @@ def main(argv):
             break
         
         for c in range(0, len(l)):
-            current_substr = l[c:c+4]
+            current_substr = l[c:c + NUM_DISTINCT_CHARACTERS]
             if len(set(current_substr)) == len(current_substr):
                 print(current_substr)
-                print(c + 4)
+                print(c + NUM_DISTINCT_CHARACTERS)
                 break
 
 

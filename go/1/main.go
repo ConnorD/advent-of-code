@@ -40,12 +40,8 @@ func main() {
 		}
 	}
 
-	calorieSum := 0
-	for _, value := range topThreeElves {
-		calorieSum += value
-	}
 
-	fmt.Println(calorieSum)
+	fmt.Println(sum(topThreeElves))
 }
 
 
@@ -61,4 +57,14 @@ func min(arr []int) (int, int) {
 	}
 
 	return min, minIndex
+}
+
+func sum(arr []int) int {
+	sum := 0
+
+	for _, value := range arr {
+		sum += value
+	}
+
+	return sum
 }

@@ -23,20 +23,28 @@ func main() {
 	}
 
 	currentElf := 0
-	maxElf := 0
+	topThreeElves := make([]int, 3)
 
 	for _, line := range strings.Split(string(content), "\n") {
 		number, err := strconv.Atoi(line)
 		currentElf += number
 
 		if err != nil {
-			if currentElf > maxElf {
-				maxElf = currentElf
+			for i, elf := range topThreeElves {
+				if currentElf > elf {
+					topThreeElves[i] = currentElf
+					break
+				}
 			}
 
 			currentElf = 0
 		}
 	}
 
-	fmt.Println(maxElf)
+	calorieSum := 0
+	for _, value := range topThreeElves {
+		calorieSum += value
+	}
+
+	fmt.Println(calorieSum)
 }

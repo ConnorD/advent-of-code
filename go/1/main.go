@@ -30,11 +30,10 @@ func main() {
 		currentElf += number
 
 		if err != nil {
-			for i, elf := range topThreeElves {
-				if currentElf > elf {
-					topThreeElves[i] = currentElf
-					break
-				}
+			minValue, minIndex := min(topThreeElves)
+
+			if currentElf > minValue {
+				topThreeElves[minIndex] = currentElf
 			}
 
 			currentElf = 0
@@ -47,4 +46,19 @@ func main() {
 	}
 
 	fmt.Println(calorieSum)
+}
+
+
+func min(arr []int) (int, int) {
+	min := arr[0]
+	minIndex := 0
+
+	for i, value := range arr {
+		if value < min {
+			min = value
+			minIndex = i
+		}
+	}
+
+	return min, minIndex
 }
